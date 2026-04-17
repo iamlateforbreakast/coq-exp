@@ -1,0 +1,5 @@
+-R . SpaceWireProject
+SpaceWireBase.v
+StarTracker.v
+OBC.v
+System.v
