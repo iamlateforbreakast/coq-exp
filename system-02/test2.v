@@ -131,3 +131,20 @@ Compute (HardwareSimulation.run 20 ComputerLogic.setup_and_read_x initial_gyro).
    = ([4200], {| x_reg := 42; y_reg := 88; config := 1; pending := 10 |})
 *)
 
+(* ==========================================
+   PROOFS: Verifying our SpaceWire Logic
+   ========================================== *)
+
+Theorem cfg_is_correct : forall s, 
+  snd (HardwareSimulation.run 20 ComputerLogic.setup_and_read_x s) 
+  = {| HardwareSimulation.x_reg := HardwareSimulation.x_reg s; 
+       HardwareSimulation.y_reg := HardwareSimulation.y_reg s; 
+       HardwareSimulation.config := 1; 
+       HardwareSimulation.pending := 10 |}.
+Proof.
+  intros s.
+  (* This tells Coq to execute the 'run' function symbolically *)
+  simpl. 
+  (* Reflexivity checks if both sides of the '=' are identical *)
+  reflexivity. 
+Qed.
