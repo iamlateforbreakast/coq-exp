@@ -1,5 +1,5 @@
 (* OBC.v *)
-Require Import SpaceWireBase.
+Require Import SpaceWireProject.SpaceWireBase.
 
 Record OBC_State := {
   link_status : SpW_State;
@@ -7,4 +7,4 @@ Record OBC_State := {
 }.
 
 Definition obc_behaviour : SpW_IO unit :=
-  s <- Read (fun s => Return s) ;; Return tt.
+  Read (fun (s : SpW_Signal) => @Return tt).
